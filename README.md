@@ -29,9 +29,7 @@ listener(messageEvent, function(e) {
     var data = e[key];
 
     if (data.name && data.documentHeight) {
-        document.getElementById(id).css({
-            height: data.documentHeight + 'px'
-        });
+        document.getElementById(id).style.height = data.documentHeight + 'px';
     }
 }, false);
 ```

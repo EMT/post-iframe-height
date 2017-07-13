@@ -16,7 +16,7 @@ In the parent page, give the iframe the same name and ID:
 <iframe name="{ unique id }" id="{ unique id }" src="…">
 ```
 
-And do soemthing like:
+And do something like:
 
 ```
 var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";

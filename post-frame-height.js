@@ -4,7 +4,7 @@
     }
 
     var addEventListener = function(event, func) {
-        if (window.addEventListener){
+        if (window.addEventListener) {
             window.addEventListener(event, func);
         }
         else {
@@ -12,18 +12,23 @@
         }
     };
 
-    var postMessageHeight = function() {
-        parent.postMessage({
-            name: name,
-            documentHeight: document.body.scrollHeight
-        }, "*");
-    }
+    addEventListener('message', function(e) {
+        var data = e.message || e.data;
 
-    addEventListener('load', function() {
-        postMessageHeight();
+        if (data === 'howHigh?') {
+            var postMessageHeight = function() {
+                parent.postMessage({
+                    name: name,
+                    documentHeight: document.body.scrollHeight
+                }, e.origin);
+            }
+
+            addEventListener('resize', function() {
+                postMessageHeight();
+            });
+
+            postMessageHeight();
+        }
     });
 
-    addEventListener('resize', function() {
-        postMessageHeight();
-    });
 })();

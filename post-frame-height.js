@@ -8,7 +8,7 @@
             window.addEventListener(event, func);
         }
         else {
-            window.attachEvent('onload', func);
+            window.attachEvent('on' + event, func);
         }
     };
 
